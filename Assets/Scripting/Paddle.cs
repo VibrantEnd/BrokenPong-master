@@ -4,8 +4,8 @@ using UnityEngine.InputSystem;
 
 public enum PlayerType 
 { 
-    Player1
-    , Player2
+    Player1,
+    Player2
 }
 
 public class Paddle : MonoBehaviour
@@ -27,7 +27,7 @@ public class Paddle : MonoBehaviour
     {
         moveInput.Enable();
     }
-    
+    // Enable and Disable stop and start the inputs from being accepted
     void OnDisable()
     {
         moveInput.Disable();

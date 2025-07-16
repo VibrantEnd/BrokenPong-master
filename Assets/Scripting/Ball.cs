@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class Ball : MonoBehaviour
 {
+    // The tags in the collision function of the ball are found here 
     public enum CollisionTag
     {
         BounceWall,
@@ -33,6 +34,7 @@ public class Ball : MonoBehaviour
         transform.position = Vector2.zero;
         ballDirection = new Vector2(Random.Range(-1f, 1f), Random.Range(-1f, 1f)).normalized;
     }
+    // Interacts with the sides player or goal and responds accordingly
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag(collisionTags[(int)CollisionTag.ScoreWall]))
