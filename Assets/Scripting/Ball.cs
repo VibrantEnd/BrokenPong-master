@@ -17,7 +17,7 @@ public class Ball : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip wallCollide;
     [SerializeField] private AudioClip playerCollide;
-    [SerializeField] private AudioClip scoreGoal;
+    [SerializeField] private AudioClip goalCollide;
     void Start()
     {
         transform.position = Vector2.zero;
@@ -38,15 +38,17 @@ public class Ball : MonoBehaviour
     {
         if (other.CompareTag(tags[(int)CollisionTag.ScoreWall]))
         {
-            audioSource.PlayOneShot(scoreGoal);
+            audioSource.PlayOneShot(goalCollide);
             ResetBall();
         }
         else if (other.CompareTag(tags[(int)CollisionTag.BounceWall]))
         {
+            audioSource.PlayOneShot(wallCollide);
             ballDirection.y = -ballDirection.y;
         }
         else if (other.CompareTag(tags[(int)CollisionTag.Player]))
         {
+            audioSource.PlayOneShot(playerCollide);
             ballDirection.x = -ballDirection.x;
             ballDirection.y = transform.position.y - other.transform.position.y;
             ballDirection = ballDirection.normalized;
