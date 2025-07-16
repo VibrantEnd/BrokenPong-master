@@ -530,7 +530,7 @@ GameObject:
   - component: {fileID: 417015233}
   - component: {fileID: 417015234}
   m_Layer: 0
-  m_Name: P
+  m_Name: Player1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -618,14 +618,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9069397689223ff47b4b2c1f907cb265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerType: 0
-  s: 10
-  d: 4
-  ia:
-    m_Name: Ia
+  CurrentPlayer: 0
+  Speed: 10
+  Boundary: 4
+  moveInput:
+    m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 45f6577c-fe18-4e52-81b3-97fbb7578ab1
+    m_Id: aac300a1-ed12-43bd-a3be-913de5d98bf5
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
@@ -1171,7 +1171,7 @@ GameObject:
   - component: {fileID: 710828497}
   - component: {fileID: 710828498}
   m_Layer: 0
-  m_Name: P
+  m_Name: Player2
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1259,14 +1259,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9069397689223ff47b4b2c1f907cb265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerType: 1
-  s: 10
-  d: 4
-  ia:
-    m_Name: Ia
+  CurrentPlayer: 0
+  Speed: 10
+  Boundary: 4
+  moveInput:
+    m_Name: 
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 0091a13a-ccde-43fa-b586-ac10d7ba8fe2
+    m_Id: 03d4ebc4-2bf3-41b7-8b87-73212a7b6d63
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
@@ -1635,7 +1635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 931116977}
   m_Layer: 0
-  m_Name: OtherGameObjects
+  m_Name: Borders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2162,7 +2162,7 @@ GameObject:
   - component: {fileID: 1368952081}
   - component: {fileID: 1368952082}
   m_Layer: 0
-  m_Name: WhyIsTheBallASquareAndNotACircle?
+  m_Name: Ball
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2250,7 +2250,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 64ad354a211088a408aff25e3ea24117, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x: 8
+  ballSpeed: 8
   tags: []
   otherTag: 
   aS: {fileID: 0}
@@ -2949,7 +2949,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1823548398}
   m_Layer: 0
-  m_Name: GameObjects
+  m_Name: Goals
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2982,7 +2982,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1855949037}
   m_Layer: 0
-  m_Name: Art
+  m_Name: Median
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
