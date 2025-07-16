@@ -622,13 +622,37 @@ MonoBehaviour:
   Speed: 10
   Boundary: 4
   moveInput:
-    m_Name: 
+    m_Name: Move Input
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: aac300a1-ed12-43bd-a3be-913de5d98bf5
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 1D Axis
+      m_Id: fa828e8b-3270-4286-b0b6-b410d7a6cb4d
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: e4571c07-f5d5-4320-8e8a-abb6a5d03dc7
+      m_Path: <Keyboard>/s
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 3f827145-8b75-42c0-9588-3c3406930b91
+      m_Path: <Keyboard>/w
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
     m_Flags: 0
 --- !u!61 &417015234
 BoxCollider2D:
@@ -1259,17 +1283,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9069397689223ff47b4b2c1f907cb265, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentPlayer: 0
+  CurrentPlayer: 1
   Speed: 10
   Boundary: 4
   moveInput:
-    m_Name: 
+    m_Name: Move Input
     m_Type: 0
     m_ExpectedControlType: 
     m_Id: 03d4ebc4-2bf3-41b7-8b87-73212a7b6d63
     m_Processors: 
     m_Interactions: 
-    m_SingletonActionBindings: []
+    m_SingletonActionBindings:
+    - m_Name: 1D Axis
+      m_Id: a81d979e-ecb3-4dc4-b079-def13fbd60d9
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: 4e45f90c-39bb-4d9b-ae6c-a3a7f0bb602b
+      m_Path: <Keyboard>/downArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 5380c735-41d7-4cbe-b5f6-3e7e15d47db0
+      m_Path: <Keyboard>/upArrow
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Move Input
+      m_Flags: 8
     m_Flags: 0
 --- !u!61 &710828498
 BoxCollider2D:
@@ -1328,8 +1376,9 @@ GameObject:
   - component: {fileID: 750163711}
   - component: {fileID: 750163710}
   - component: {fileID: 750163709}
+  - component: {fileID: 750163712}
   m_Layer: 0
-  m_Name: Square
+  m_Name: LeftGoal
   m_TagString: ScoreWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1451,6 +1500,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1823548398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &750163712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 750163708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80bd2708dc9599840881997b02d83489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoringPlayer: 1
 --- !u!1 &818121079
 GameObject:
   m_ObjectHideFlags: 0
@@ -1924,7 +1986,7 @@ GameObject:
   - component: {fileID: 1014225937}
   - component: {fileID: 1014225936}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Scores
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2251,12 +2313,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballSpeed: 8
-  tags: []
-  otherTag: 
-  aS: {fileID: 0}
-  clip1: {fileID: 0}
-  clip2: {fileID: 0}
-  clip3: {fileID: 0}
+  collisionTags:
+  - BounceWall
+  - Player
+  - ScoreWall
+  audioSource: {fileID: 0}
+  wallCollide: {fileID: 0}
+  playerCollide: {fileID: 0}
+  goalCollide: {fileID: 0}
 --- !u!50 &1368952081
 Rigidbody2D:
   serializedVersion: 5
@@ -3031,8 +3095,9 @@ GameObject:
   - component: {fileID: 1890164554}
   - component: {fileID: 1890164553}
   - component: {fileID: 1890164552}
+  - component: {fileID: 1890164555}
   m_Layer: 0
-  m_Name: Square
+  m_Name: RightGoal
   m_TagString: ScoreWall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3154,6 +3219,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1823548398}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1890164555
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1890164551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80bd2708dc9599840881997b02d83489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scoringPlayer: 0
 --- !u!1 &2019126693
 GameObject:
   m_ObjectHideFlags: 0
@@ -3253,7 +3331,7 @@ GameObject:
   - component: {fileID: 2057140519}
   - component: {fileID: 2057140518}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Player2Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3275,8 +3353,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 175, y: -125}
-  m_SizeDelta: {x: 250, y: 200}
+  m_AnchoredPosition: {x: 75.9333, y: -28.433}
+  m_SizeDelta: {x: 113.3402, y: 56.865}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2057140518
 MonoBehaviour:
@@ -3325,8 +3403,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150
-  m_fontSizeBase: 150
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -3476,7 +3554,7 @@ GameObject:
   - component: {fileID: 2144249600}
   - component: {fileID: 2144249599}
   m_Layer: 5
-  m_Name: Score
+  m_Name: Player1Score
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3498,8 +3576,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -175, y: -125}
-  m_SizeDelta: {x: 250, y: 200}
+  m_AnchoredPosition: {x: -78.0433, y: -30.072}
+  m_SizeDelta: {x: 118.6528, y: 53.587}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2144249599
 MonoBehaviour:
@@ -3548,8 +3626,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 150
-  m_fontSizeBase: 150
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
